@@ -1,0 +1,41 @@
+name: hello-world
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+# on: [push]
+on: [workflow_dispatch]
+jobs:
+  hello-world-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v6
+      - run: echo "$(cat hello_world.txt)"
+  Explore-GitHub-Actions:
+    needs: hello-world-job
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v6
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: List files in the repository
+        run: |
+          ls -la ${{ github.workspace }}
+          echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
+          ls -la ${{ github.workspace }} >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+      - run: echo "🍏 This job's status is ${{ job.status }}." >> $GITHUB_STEP_SUMMARY
+      - name: Echo Multiline Markdown
+        run: |
+          echo "### Hello world! 🚀" >> $GITHUB_STEP_SUMMARY
+          echo >> $GITHUB_STEP_SUMMARY
+          echo "| Variable   | Value |"                    >> $GITHUB_STEP_SUMMARY
+          echo "|------------|-------|"                    >> $GITHUB_STEP_SUMMARY
+          echo "| Workspace  | ${{ github.workspace }}  |" >> $GITHUB_STEP_SUMMARY
+          echo "| Event      | ${{ github.event_name }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Runner OS  | ${{ runner.os }}         |" >> $GITHUB_STEP_SUMMARY
+          echo "| Repo       | ${{ github.repository }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Branch     | ${{ github.ref }}        |" >> $GITHUB_STEP_SUMMARY
+          echo "| Job Status | ${{ job.status }}        |" >> $GITHUB_STEP_SUMMARY
