@@ -27,6 +27,11 @@ jobs:
                   next_release=
                   # source scripts/parse_release.sh ${{ github.ref_name }}
                   DEBUG=y scripts/parse_release.sh release-2.3.4
+                  # Copy the resulting variables to the environment
+                  {
+                    echo "curr_release=${curr_release}"
+                    echo "next_release=${next_release}"
+                  } >> "$GITHUB_ENV"
                   #   #
                   #   # Copy the resulting variables to the environment
                   #   echo "curr_release=${curr_release}" >> "$GITHUB_ENV"
