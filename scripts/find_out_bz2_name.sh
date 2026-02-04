@@ -34,6 +34,7 @@ bz2_name=${sorted_bz2_files[-1]}
 if [[ $DEBUG == y ]]; then
 	echo "bz2_files=\"${bz2_files[*]}\""
 	echo "bz2_name=$bz2_name"
+	tar jxf "${bz2_name}" ./*
 fi
 
 # Save in the environment

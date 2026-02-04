@@ -46,7 +46,7 @@ jobs:
               #
               # Calculate the checksum
               run: |
-                  #sha1sum ${bz2_name} > ${bz2_name}.sha1
+                  sha1sum ${bz2_name} > ${bz2_name}.sha1
                   {
                     echo '```bash'
                     echo "sha1sum ${bz2_name} > ${bz2_name}.sha1"
@@ -56,18 +56,17 @@ jobs:
             - name: List files in the repository root
               run: |
                   {
-                  echo "\`\`\`bash"
+                  echo '```bash'
                   #ls -la ${{ github.workspace }}
                   #echo
                   #ls libupnp-*.tar.bz2
                   #echo
                   ls -la
-                  echo "\`\`\`"
+                  echo '```'
                   }  >> "$GITHUB_STEP_SUMMARY"
             - name: Release
               #
               # This action uploads the generated release files to GitHub
-              if: false
               uses: softprops/action-gh-release@v2
               with:
                   draft: true
