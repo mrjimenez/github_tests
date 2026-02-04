@@ -45,6 +45,7 @@ jobs:
             - name: SHA1
               #
               # Calculate the checksum
+              if: false
               run: |
                   sha1sum ${bz2_name} > ${bz2_name}.sha1
             - name: List files in the repository root
@@ -61,6 +62,7 @@ jobs:
             - name: Release
               #
               # This action uploads the generated release files to GitHub
+              if: false
               uses: softprops/action-gh-release@v2
               with:
                   draft: true
@@ -69,6 +71,7 @@ jobs:
                       ${{ steps.find-bz-name.outputs.bz2_name }}
                       ${{ steps.find-bz-name.outputs.bz2_name }}.sha1
             - name: Home_keeping
+              if: false
               run: |
                   #
                   # Edit some files
