@@ -51,7 +51,7 @@ jobs:
                     echo '```bash'
                     echo "sha1sum ${bz2_name} > ${bz2_name}.sha1"
                     echo bz2_name=${{ steps.find-bz-name.outputs.bz2_name }}
-                    echo '```''
+                    echo '```'
                   } >>  "$GITHUB_STEP_SUMMARY"
             - name: List files in the repository root
               run: |
