@@ -56,7 +56,7 @@ next_release=${current_version}.${current_major}.${next_minor}
 	echo "next_release=${next_release}"
 } >> "$GITHUB_STEP_SUMMARY"
 
-if [[ $DEBUG == y ]]; then
+if [[ $DEBUG != n ]]; then
 	echo "Parsed  release is '${parsed_release}'"
 	echo "Parsed  prefix  is '${parsed_prefix}'"
 	echo "Current version is '${current_version}'"
