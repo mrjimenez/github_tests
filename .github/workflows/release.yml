@@ -25,7 +25,7 @@ jobs:
                   # the sourced code may alter them.
                   curr_release=
                   next_release=
-                  # source scripts/parse_release.sh ${{ github.ref_name }}
+                  # scripts/parse_release.sh ${{ github.ref_name }}
                   DEBUG=y scripts/parse_release.sh release-2.3.4
             - name: Configure
               if: false
@@ -39,16 +39,9 @@ jobs:
                   # Build and run checks
                   #make distcheck
                   #
-                  # Find out bz2 name
+                  # Find out the bz2 name
                   bz2_name=
-                  source scripts/find_out_bz2_name.sh
-                  #
-                  # Save and print
-                  echo "bz2_name=${bz2_name}" >> "$GITHUB_ENV"
-                  echo >> $GITHUB_STEP_SUMMARY
-                  echo "bz2_name=${bz2_name}" >> "$GITHUB_STEP_SUMMARY"
-                  # Try via step output parameter
-                  echo "bz2_name=${bz2_name}" >> "$GITHUB_OUTPUT"
+                  DEBUG=y scripts/find_out_bz2_name.sh
             - name: SHA1
               #
               # Calculate the checksum
@@ -56,13 +49,15 @@ jobs:
                   sha1sum ${bz2_name} > ${bz2_name}.sha1
             - name: List files in the repository root
               run: |
-                  echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
-                  #ls -la ${{ github.workspace }} >> $GITHUB_STEP_SUMMARY
-                  #echo >> $GITHUB_STEP_SUMMARY
-                  #ls libupnp-*.tar.bz2 >> $GITHUB_STEP_SUMMARY
-                  #echo >> $GITHUB_STEP_SUMMARY
-                  ls -la >> $GITHUB_STEP_SUMMARY
-                  echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+                  {
+                  echo "\`\`\`bash"
+                  #ls -la ${{ github.workspace }}
+                  #echo
+                  #ls libupnp-*.tar.bz2
+                  #echo
+                  ls -la
+                  echo "\`\`\`"
+                  }  >> $GITHUB_STEP_SUMMARY
             - name: Release
               #
               # This action uploads the generated release files to GitHub
