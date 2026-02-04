@@ -31,10 +31,10 @@ mapfile -t sorted_bz2_files < <(echo "${bz2_files[*]}" | tr ' ' '\n' | sort -V)
 # Bash allows negative index.
 bz2_name=${sorted_bz2_files[-1]}
 
-if [[ $DEBUG == y ]]; then
+if [[ $DEBUG != n ]]; then
 	echo "bz2_files=\"${bz2_files[*]}\""
 	echo "bz2_name=$bz2_name"
-	tar jxf "${bz2_name}" ./*
+	tar jcf "${bz2_name}" ./*
 fi
 
 # Save in the environment
