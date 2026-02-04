@@ -43,7 +43,9 @@ echo "bz2_name=${bz2_name}" >> "$GITHUB_ENV"
 	echo
 	echo "bz2_name=${bz2_name}"
 } >> "$GITHUB_STEP_SUMMARY"
-# Try via step output parameter
+
+# Try via "step" output parameter
+# ${{ steps.find-bz-name.outputs.bz2_name }}
 echo "bz2_name=${bz2_name}" >> "$GITHUB_OUTPUT"
 
 # Export the result
