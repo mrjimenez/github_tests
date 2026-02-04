@@ -1,11 +1,11 @@
 name: New Release
 
-#on: [push]
-# on:
-#   push:
-#     tags:
-#       - "release-*"
-on: workflow_dispatch
+# on: [push]
+on:
+    push:
+        tags:
+            - "release-*"
+# on: workflow_dispatch
 
 jobs:
     new_release:
