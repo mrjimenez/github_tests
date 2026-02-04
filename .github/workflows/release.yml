@@ -45,9 +45,12 @@ jobs:
             - name: SHA1
               #
               # Calculate the checksum
-              if: false
               run: |
-                  sha1sum ${bz2_name} > ${bz2_name}.sha1
+                  #sha1sum ${bz2_name} > ${bz2_name}.sha1
+                  {
+                    echo "sha1sum ${bz2_name} > ${bz2_name}.sha1"
+                    echo bz2_name=${{ steps.find-bz-name.outputs.bz2_name }}
+                  } >>  "$GITHUB_STEP_SUMMARY"
             - name: List files in the repository root
               run: |
                   {
@@ -58,7 +61,7 @@ jobs:
                   #echo
                   ls -la
                   echo "\`\`\`"
-                  }  >> $GITHUB_STEP_SUMMARY
+                  }  >> "$GITHUB_STEP_SUMMARY"
             - name: Release
               #
               # This action uploads the generated release files to GitHub
