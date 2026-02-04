@@ -10,4 +10,4 @@ Useful to test stuff without spoiling other repos history and without annoying o
 ## 2. Github Actions
 
 - [Starter Workflows](https://github.com/actions/starter-workflows)
-- 
+- [Quickstart for GitHub Actions](https://docs.github.com/en/actions/get-started/quickstart)
