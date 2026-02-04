@@ -11,6 +11,8 @@ jobs:
     new_release:
         name: Create release ${{ github.ref_name }}
         runs-on: [ubuntu-latest]
+        permissions:
+            contents: write
         steps:
             - name: Checkout
               # Checkout the repo
@@ -67,6 +69,7 @@ jobs:
             - name: Release
               #
               # This action uploads the generated release files to GitHub
+              # https://docs.github.com/rest/releases/releases#generate-release-notes-content-for-a-release
               uses: softprops/action-gh-release@v2
               with:
                   draft: true
