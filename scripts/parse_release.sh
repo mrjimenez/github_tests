@@ -6,13 +6,13 @@
 TAG_NAME=$1
 
 if [[ -z $TAG_NAME ]]; then
-	echo "TAG_NAME is empty"
+	echo "Tag name is empty"
 	exit 1
 fi
 
 PATTERN="release-[0-9]+\.[0-9]+\.[0-9]+$"
 if [[ ! $TAG_NAME =~ $PATTERN ]]; then
-	echo "TAG_NAME does not respect the pattern: \"$TAG_NAME =~ $PATTERN\""
+	echo "Tag name does not respect the pattern: \"$TAG_NAME =~ $PATTERN\""
 	exit 2
 fi
 
