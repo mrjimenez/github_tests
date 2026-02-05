@@ -15,7 +15,7 @@ check_release () {
         exit 1
     fi
 
-    PATTERN="release-[0-9]+\.[0-9]+\.[0-9]+$"
+    PATTERN="[0-9]+\.[0-9]+\.[0-9]+$"
     if [[ ! ${TAG_VALUE} =~ ${PATTERN} ]]; then
         echo "${TAG_NAME} does not respect the pattern: \"${TAG_VALUE} =~ ${PATTERN}\""
         exit 2
