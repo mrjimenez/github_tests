@@ -10,6 +10,7 @@ on: workflow_dispatch
 env:
     DEBUG: "y"
     RUN_CONFIGURE: false
+    RUN_BUILD: false
     RUN_RELEASE: false
     RUN_HOME_KEEPING: false
 
@@ -41,6 +42,7 @@ jobs:
                   ./bootstrap &&
                   ./configure
             - name: Build
+              if: ${{ env.RUN_BUILD == 'true' }}
               id: build
               #
               # Build and run checks
