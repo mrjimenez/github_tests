@@ -95,14 +95,14 @@ jobs:
               run: |
                   #
                   # Edit some files
-                  source scripts/home_keeping.sh
+                  DEBUG=${DEBUG} scripts/home_keeping.sh
                   #
                   # Configure git
                   git config --global user.name 'GitHub Action'
                   git config --global user.email 'github_action@users.noreply.github.com'
                   # Commit
-                  git status >> $GITHUB_STEP_SUMMARY
-                  git add -A
+                  git status >> "$GITHUB_STEP_SUMMARY"
+                  git add :
                   git commit -am "Home keeping for the next release"
-                  git status >> $GITHUB_STEP_SUMMARY
+                  git status >> "$GITHUB_STEP_SUMMARY"
                   git push origin HEAD:branch-1.14.x
