@@ -12,7 +12,7 @@ env:
     RUN_CONFIGURE: false
     RUN_BUILD: false
     RUN_RELEASE: false
-    RUN_HOME_KEEPING: false
+    RUN_HOME_KEEPING: true
 
 jobs:
     new_release:
