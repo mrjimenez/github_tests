@@ -1,9 +1,12 @@
 {
 	"cSpell.words": [
 		"distcheck",
+		"Doxyfile",
 		"github",
+		"ixml",
 		"jxvf",
 		"libupnp",
-		"softprops"
+		"softprops",
+		"upnp"
 	]
 }
