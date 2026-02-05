@@ -1,11 +1,17 @@
 name: New Release
 
 # on: [push]
-on:
-    push:
-        tags:
-            - "release-*"
-# on: workflow_dispatch
+# on:
+#     push:
+#         tags:
+#             - "release-*"
+on: workflow_dispatch
+
+env:
+    DEBUG: "y"
+    RUN_CONFIGURE: false
+    RUN_RELEASE: false
+    RUN_HOME_KEEPING: false
 
 jobs:
     new_release:
@@ -28,25 +34,28 @@ jobs:
                   curr_release=
                   next_release=
                   # scripts/parse_release.sh ${{ github.ref_name }}
-                  DEBUG=y scripts/parse_release.sh release-2.3.4
+                  DEBUG=${DEBUG} scripts/parse_release.sh release-2.3.4
             - name: Configure
-              if: false
+              if: env.RUN_CONFIGURE
               run: >
                   ./bootstrap &&
                   ./configure
             - name: Build
-              id: find-bz-name
+              id: build
+              #
+              # Build and run checks
               run: |
-                  #
-                  # Build and run checks
-                  #make distcheck
-                  #
-                  # Find out the bz2 name
+                  make distcheck
+            - name: Find bz2 name
+              id: find-bz-name
+              #
+              # Find out the bz2 name
+              run: |
                   bz2_name=
-                  DEBUG=y scripts/find_out_bz2_name.sh
+                  DEBUG=${DEBUG} scripts/find_out_bz2_name.sh
             - name: SHA1
               #
-              # Calculate the checksum
+              # Calculate the SHA1 checksum
               run: |
                   sha1sum ${bz2_name} > ${bz2_name}.sha1
                   {
@@ -71,6 +80,7 @@ jobs:
               # This action uploads the generated release files to GitHub
               # https://github.com/softprops/action-gh-release
               # https://docs.github.com/rest/releases/releases#generate-release-notes-content-for-a-release
+              if: env.RUN_RELEASE
               uses: softprops/action-gh-release@v2
               with:
                   draft: true
@@ -78,8 +88,8 @@ jobs:
                   files: |
                       ${{ steps.find-bz-name.outputs.bz2_name }}
                       ${{ steps.find-bz-name.outputs.bz2_name }}.sha1
-            - name: Home_keeping
-              if: false
+            - name: Home keeping
+              if: env.RUN_HOME_KEEPING
               run: |
                   #
                   # Edit some files
