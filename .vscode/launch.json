@@ -12,7 +12,6 @@
 			"program": "${command:SelectScriptName}",
 			"env": {
 				"DEBUG": "y",
-				"curr_release": "1.14.26",
 				"next_release": "1.14.27"
 			},
 			"args": []
