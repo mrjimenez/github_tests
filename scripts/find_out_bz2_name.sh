@@ -13,6 +13,7 @@ if [[ $DEBUG == n ]]; then
 	# Simplest way:
 	bz2_files=(libupnp-*.tar.bz2)
 else
+	# Make up a test example
 	bz2_files=(
 		libupnp-10.2.3.tar.bz2
 		libupnp-1.20.3.tar.bz2
