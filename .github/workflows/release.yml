@@ -30,12 +30,20 @@ jobs:
                   #
                   # Parse the tag name
                   #
-                  # These variables must exist in the parent process so that
-                  # the sourced code may alter them.
-                  curr_release=
+                  # The "next_release" variable must exist in the parent process
+                  # so that the script code may alter it.
+                  #
                   next_release=
-                  # scripts/parse_release.sh ${{ github.ref_name }}
-                  DEBUG=${DEBUG} scripts/parse_release.sh release-2.3.4
+                  # This is for starting the workflow manually, in which case
+                  # github.ref_name will be undefined.
+                  git branch >> "$GITHUB_STEP_SUMMARY"
+                  TAG_NAME=${{ github.ref_name }}
+                  if [[ $DEBUG == "n" && -z $TAG_NAME ]]; then
+                    echo "Tag name is empty" >> "$GITHUB_STEP_SUMMARY"
+                    exit 1
+                  fi
+                  # Parse the tag name and calculate the next release value
+                  DEBUG=${DEBUG} scripts/parse_release.sh $TAG_NAME
             - name: Configure
               if: ${{ env.RUN_CONFIGURE == 'true' }}
               run: >
