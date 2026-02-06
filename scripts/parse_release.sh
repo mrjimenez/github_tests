@@ -101,6 +101,7 @@ fi
 
 #
 # Export the results
-export curr_release next_release
+#export curr_release next_release
+export next_release
 
 exit 0
