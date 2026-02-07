@@ -59,4 +59,5 @@ dkms.conf
 .*.sw?
 *.bz2
 tmp
+build
 
