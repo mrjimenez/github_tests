@@ -1,0 +1,14 @@
+name: Test Workflow
+on: [workflow_dispatch]
+jobs:
+  first-test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Run a test
+        run: |
+          echo "Test 1 - 1: " "$?"
+          true
+          echo "Test 1 - 2" " "$?"
+          false
+          echo "Test 1 - 3" " "$?"
