@@ -1,4 +1,67 @@
 {
+	"cmake.configureOnOpen": false,
+	"cmake.enableAutomaticKitScan": false,
+	"editor.rulers": [
+		70,
+		{
+			"column": 80,
+			"color": "#ff0000"
+		}
+	],
+	"editor.defaultFormatter": "ms-vscode.cpptools",
+	"[c]": {
+		"editor.defaultFormatter": "ms-vscode.cpptools",
+		"editor.formatOnSave": true,
+		"editor.tabSize": 8,
+		"editor.insertSpaces": false,
+		"editor.useTabStops": true
+	},
+	"[cpp]": {
+		"editor.defaultFormatter": "ms-vscode.cpptools",
+		"editor.formatOnSave": true,
+		"editor.tabSize": 8,
+		"editor.insertSpaces": false,
+		"editor.useTabStops": true
+	},
+	"[yaml]": {
+		"editor.formatOnSave": true,
+		"editor.tabSize": 2,
+		"editor.insertSpaces": true,
+		"editor.useTabStops": false,
+		"editor.autoIndent": "keep",
+		"diffEditor.ignoreTrimWhitespace": false,
+		"editor.defaultColorDecorators": "never",
+		"editor.quickSuggestions": {
+			"strings": true,
+			"other": true,
+			"comments": false
+		}
+	},
+	"C_Cpp.default.compileCommands": [
+		"${workspaceFolder}/build/compile_commands.json"
+	],
+	/*
+	"C_Cpp.default.includePath": [
+		"${workspaceFolder}",
+		"${workspaceFolder}/upnp/inc",
+		"${workspaceFolder}/upnp/src/inc",
+		"${workspaceFolder}/upnp/src/threadutil",
+		"${workspaceFolder}/ixml/inc"
+	],
+	*/
+	/*
+	"C_Cpp.default.systemIncludePath": [
+		"/usr/lib64/gcc/x86_64-suse-linux/10/include",
+		"/usr/local/include",
+		"/usr/lib64/gcc/x86_64-suse-linux/10/include-fixed",
+		"/usr/lib64/gcc/x86_64-suse-linux/10/../../../../x86_64-suse-linux/include",
+		"/usr/include",
+	],
+	*/
+	"C_Cpp.clang_format_path": "~/usr/bin/clang-format",
+	"C_Cpp.clang_format_style": "file",
+	"C_Cpp.formatting": "clangFormat",
+	"C_Cpp.intelliSenseEngine": "default",
 	"cSpell.words": [
 		"distcheck",
 		"Doxyfile",
