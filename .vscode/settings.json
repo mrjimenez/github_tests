@@ -63,6 +63,7 @@
 	"C_Cpp.formatting": "clangFormat",
 	"C_Cpp.intelliSenseEngine": "default",
 	"cSpell.words": [
+		"ctest",
 		"distcheck",
 		"Doxyfile",
 		"github",
