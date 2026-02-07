@@ -12,3 +12,5 @@ jobs:
           echo "Test 1 - 2:" " "$?"
           false
           echo "Test 1 - 3:" " "$?"
+          true; echo "Test 1 - 4:" " "$?"
+          false; echo "Test 1 - 5:" " "$?"
