@@ -17,7 +17,8 @@ jobs:
           false; echo "Test 1 - 5:" "$?"
   test-job-2:
     name: Second Test
-    needs: test-job-1
+    # Test if this job is ran even if the first fails
+    #needs: test-job-1
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
