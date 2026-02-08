@@ -25,5 +25,9 @@ jobs:
       - name: Run a test
         run: |
           cd cmake-test
+          # When using scripts, care must be taken with the return status.
+          # Scripts usually do not stop execution when a command fails, like in
+          # Github workflows.
+          # Consider using "set -euo"
           ./build-and-run-test.sh
           echo "Test 2 status: $?"

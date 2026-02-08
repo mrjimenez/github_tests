@@ -4,7 +4,11 @@ mkdir build
 cd build || exit 1
 cmake ..
 cmake --build .
+
 ctest
-echo "1 - ctest return status is $?"
+RETURN_STATUS=$?
+echo "1 - ctest return status is $RETURN_STATUS"
+
 ctest "--output-on-failure"
-echo "2 - ctest return status is $?"
+RETURN_STATUS=$?
+echo "2 - ctest return status is $RETURN_STATUS"
