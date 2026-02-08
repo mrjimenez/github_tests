@@ -11,3 +11,4 @@ Useful to test stuff without spoiling other repos history and without annoying o
 
 - [Starter Workflows](https://github.com/actions/starter-workflows)
 - [Quickstart for GitHub Actions](https://docs.github.com/en/actions/get-started/quickstart)
+- [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax)
