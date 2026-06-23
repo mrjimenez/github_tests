@@ -5,7 +5,7 @@ jobs:
     name: First Test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Run a test
         run: |
           echo "Test 1 - 1: " "$?"
@@ -21,7 +21,7 @@ jobs:
     #needs: test-job-1
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Run a test
         run: |
           cd cmake-test
